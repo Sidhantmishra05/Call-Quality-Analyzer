@@ -1,9 +1,43 @@
-# Call-Quality-Analyzer
 
-### Approach Overview
+# Call Quality Analyzer with Speaker Diarization
 
-Our Call Quality Analyzer processes sales call recordings to provide actionable insights efficiently. First, the audio is downloaded and converted to a clean .wav format. We use OpenAI’s Whisper model for transcription, splitting the call into time-stamped text segments. Simultaneously, speaker diarization is performed using a fallback energy-based method (or Pyannote if authenticated), identifying who spoke when.
+This project is a complete system to analyze sales or customer calls. It transcribes audio, identifies speakers, and provides insightful metrics about the call. It is built using Python, Whisper, and Pyannote (with fallback for diarization), and is fully runnable in Google Colab.
 
-Next, we combine the transcription with speaker segments, aligning text with each speaker. This enables calculation of metrics like talk-time ratio, longest monologue, and the number of questions asked per participant. Sentiment analysis is applied on each speaker’s utterances to classify them as positive, negative, or neutral. Finally, the system generates one actionable insight, such as balancing speaking time or improving engagement.
+### Brief Explanation of Approach
 
-We designed the pipeline to handle poor audio quality, run under 30 seconds on the free Colab tier, and produce clear outputs for analysis. The notebook is modular, making it easy to extend features like automatically detecting the sales rep versus the customer, visualizing speech patterns, or integrating other AI models in the future.
+This project performs automatic transcription and speaker diarization of audio files. The workflow first downloads audio, then uses Whisper to transcribe the speech into text segments. Next, a speaker diarization model identifies and labels speakers across the audio timeline. Finally, the transcription segments are merged with the diarization results to produce a final transcript with speaker labels and timestamps. This approach allows for clear identification of who said what and when, making it useful for meetings, interviews, and call analysis.
+
+
+
+
+## Features
+
+- Download audio from YouTube links.
+
+- Automatic transcription using OpenAI Whisper.
+
+- Speaker diarization with Pyannote (or fallback energy-based method).
+
+- Merges transcription with speaker segments to generate a clear final transcript.
+
+- Provides call analytics:
+
+    - Talk-time ratio per speaker
+
+    - Number of questions asked
+
+    - Longest monologue
+
+    - Call sentiment (positive/neutral/negative)
+
+    - Actionable insights
+
+- Bonus: Identifies the sales representative vs customer.
+
+- Optimized to run in <30 seconds on free Colab tier.
+
+
+## 🔗 Open and run the notebook in Google Colab
+[![Google Colab](https://img.shields.io/badge/Google_Colab-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://colab.research.google.com/drive/1wyRTaJ6Hm5IMBngpHTmWsN5nftC8qmnc?usp=sharing/)
+
+
